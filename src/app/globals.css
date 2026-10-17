@@ -591,8 +591,46 @@
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
 }
+/* 任务列表：无圆点 + 手绘勾选框 */
+.prose-content ul:has(input[type="checkbox"]) {
+  list-style: none;
+  padding-left: 0.25rem;
+}
 .prose-content input[type="checkbox"] {
-  @apply mr-2 accent-sage-500;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  margin-right: 0.45rem;
+  vertical-align: -2px;
+  background: #fffdf6;
+  border: 1.5px dashed #8a846b;
+  border-radius: 5px;
+  transform: rotate(-2deg);
+  cursor: pointer;
+  position: relative;
+}
+.prose-content li:nth-child(even) > input[type="checkbox"] {
+  transform: rotate(2deg);
+}
+.prose-content input[type="checkbox"]:checked {
+  background: rgba(168, 194, 155, 0.35);
+  border-color: #8fb57f;
+}
+.prose-content input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid #5f7d54;
+  border-width: 0 2.2px 2.2px 0;
+  border-radius: 1px;
+  transform: rotate(40deg);
+}
+.prose-content input[type="checkbox"]:disabled {
+  opacity: 1;
 }
 
 /* 标题锚点：深墨色常显（避免与背景色相近而"隐身"） */
