@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e4eef5"/>
+      <stop offset="60%" stop-color="#fdf6df"/>
+      <stop offset="100%" stop-color="#f6cfc8"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="500" fill="url(#sky)"/>
+  <!-- 太阳 -->
+  <circle cx="1000" cy="120" r="60" fill="#f7d77c" opacity="0.8"/>
+  <circle cx="1000" cy="120" r="80" fill="#f7d77c" opacity="0.2"/>
+  <!-- 远山 -->
+  <path d="M0 380 L200 300 L350 360 L500 280 L700 350 L900 290 L1100 340 L1200 310 L1200 500 L0 500 Z" fill="#cddcc5" opacity="0.6"/>
+  <!-- 近山 -->
+  <path d="M0 420 L150 360 L300 400 L450 340 L650 410 L850 350 L1050 390 L1200 360 L1200 500 L0 500 Z" fill="#a8c29b" opacity="0.7"/>
+  <!-- 云朵 -->
+  <g fill="#ffffff" opacity="0.7">
+    <ellipse cx="200" cy="120" rx="50" ry="22"/>
+    <ellipse cx="240" cy="110" rx="40" ry="20"/>
+    <ellipse cx="170" cy="115" rx="30" ry="16"/>
+  </g>
+  <g fill="#ffffff" opacity="0.6">
+    <ellipse cx="700" cy="180" rx="45" ry="20"/>
+    <ellipse cx="740" cy="170" rx="35" ry="18"/>
+  </g>
+  <!-- 飘落的叶子/花瓣 -->
+  <g fill="#f6cfc8" opacity="0.6">
+    <circle cx="300" cy="200" r="6"/>
+    <circle cx="500" cy="150" r="4"/>
+    <circle cx="800" cy="250" r="5"/>
+    <circle cx="950" cy="300" r="4"/>
+  </g>
+</svg>

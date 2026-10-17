@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fdf6df"/>
+      <stop offset="100%" stop-color="#f6cfc8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="100" cy="100" r="100" fill="url(#bg)"/>
+  <!-- 简笔人物 -->
+  <circle cx="100" cy="82" r="28" fill="#8a7e68"/>
+  <path d="M55 160 Q55 120 100 120 Q145 120 145 160 Z" fill="#7fa46d"/>
+  <circle cx="90" cy="80" r="4" fill="#fdfcf8"/>
+  <circle cx="110" cy="80" r="4" fill="#fdfcf8"/>
+  <path d="M92 92 Q100 98 108 92" stroke="#fdfcf8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- 腮红 -->
+  <circle cx="82" cy="90" r="5" fill="#ecaca1" opacity="0.5"/>
+  <circle cx="118" cy="90" r="5" fill="#ecaca1" opacity="0.5"/>
+</svg>
