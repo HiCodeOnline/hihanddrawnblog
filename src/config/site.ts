@@ -28,6 +28,11 @@ export const siteConfig = {
     theme: "github-light",
     label: "comment",
   },
+  // 代码块功能按钮（false 则不渲染对应按钮）
+  codeBlock: {
+    collapsible: true,
+    copyable: true,
+  },
   nav: [
     { name: "首页", href: "/" },
     { name: "归档", href: "/archives" },

@@ -21,6 +21,7 @@ import type { HeadingItem } from "@/types";
 import DonateSection from "@/components/DonateSection";
 import Utterances from "@/components/Utterances";
 import ImageLightbox from "@/components/ImageLightbox";
+import CodeBlockEnhance from "@/components/CodeBlockEnhance";
 
 interface Props {
   /** 年/月/日/slug 路径段，如 ["2026", "10", "05", "autumn-coffee"] */
@@ -204,6 +205,7 @@ export default async function PostPage({ params }: Props) {
 
       {/* 图片灯箱 */}
       <ImageLightbox />
+      <CodeBlockEnhance />
     </article>
   );
 }

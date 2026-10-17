@@ -8,7 +8,10 @@ export default function ImageLightbox() {
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
-      const img = (e.target as HTMLElement).closest(
+      const el = e.target as HTMLElement;
+      // 忽略代码块顶栏/内容区域的点击，避免误触发放大
+      if (el.closest(".code-head, .code-body")) return;
+      const img = el.closest(
         ".prose-content img"
       ) as HTMLImageElement | null;
       if (img?.src) setSrc(img.src);

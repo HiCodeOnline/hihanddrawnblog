@@ -85,4 +85,36 @@ console.log(greeting("旅人"));
 
 ---
 
+### 代码块文件名与折叠
+
+冒号后写文件路径即可在顶部展示文件名；超过 10 行的代码块默认折叠：
+
+```ts:src/lib/sum.ts
+export function quickSort(arr: number[]): number[] {
+  if (arr.length <= 1) return arr;
+  const [pivot, ...rest] = arr;
+  const left = rest.filter((n) => n < pivot);
+  const right = rest.filter((n) => n >= pivot);
+  return [...quickSort(left), pivot, ...quickSort(right)];
+}
+
+export function fibonacci(n: number): number {
+  if (n <= 1) return n;
+  let prev = 0;
+  let curr = 1;
+  for (let i = 2; i <= n; i++) {
+    [prev, curr] = [curr, prev + curr];
+  }
+  return curr;
+}
+
+export function chunk<T>(arr: T[], size: number): T[][] {
+  const result: T[][] = [];
+  for (let i = 0; i < arr.length; i += size) {
+    result.push(arr.slice(i, i + size));
+  }
+  return result;
+}
+```
+
 以上就是常用的排版元素啦，祝你写作愉快！
