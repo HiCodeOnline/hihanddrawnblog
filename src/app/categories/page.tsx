@@ -16,20 +16,12 @@ export default function CategoriesPage() {
       />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {categories.map((cat, idx) => {
-          const colors = [
-            "from-sage-100 to-sage-200/50 border-sage-200",
-            "from-rose-100 to-rose-200/50 border-rose-200",
-            "from-sky-100 to-sky-200/50 border-sky-200",
-            "from-butter-100 to-butter-200/50 border-butter-200",
-          ];
-          const color = colors[idx % colors.length];
-          return (
-            <Link
-              key={cat.name}
-              href={`/categories/${encodeURIComponent(cat.name)}`}
-              className={`paper-card p-5 bg-gradient-to-br ${color} group hover:-translate-y-1`}
-            >
+        {categories.map((cat) => (
+          <Link
+            key={cat.name}
+            href={`/categories/${encodeURIComponent(cat.name)}`}
+            className="paper-card p-5 group hover:-translate-y-1"
+          >
               <div className="flex items-center justify-between">
                 <h3 className="font-serif font-bold text-lg text-ink-700 group-hover:text-ink-800">
                   {cat.name}
@@ -42,8 +34,7 @@ export default function CategoriesPage() {
                 {cat.count} 篇文章 →
               </p>
             </Link>
-          );
-        })}
+        ))}
       </div>
 
       {categories.length === 0 && (

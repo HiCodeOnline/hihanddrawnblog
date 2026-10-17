@@ -29,7 +29,7 @@ export default function TagsPage() {
               <Link
                 key={tag.name}
                 href={`/tags/${encodeURIComponent(tag.name)}`}
-                className={`inline-flex items-center px-3 py-1.5 rounded-full bg-paper-100 border border-paper-200 text-ink-600 hover:bg-rose-100 hover:text-rose-600 hover:border-rose-200 transition-colors ${size} font-medium`}
+                className={`sticker-tag rounded-full px-3 py-1.5 ${size}`}
               >
                 #{tag.name}
                 <span className="ml-1.5 text-xs opacity-60">{tag.count}</span>

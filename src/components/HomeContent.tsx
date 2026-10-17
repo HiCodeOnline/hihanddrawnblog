@@ -1,43 +1,27 @@
 import Link from "next/link";
-import { FolderOpen, Tags, Flame } from "lucide-react";
-import Hero from "@/components/Hero";
+import { FolderOpen, Tags } from "lucide-react";
 import PostCard from "@/components/PostCard";
-import Pagination, { paginate } from "@/components/Pagination";
+import PostBrowser from "@/components/PostBrowser";
+import SidebarProfile from "@/components/SidebarProfile";
 import {
   getAllPostsMeta,
   getAllCategories,
   getAllTags,
   getPinnedPosts,
 } from "@/lib/posts";
-import { siteConfig } from "@/config/site";
 
-interface Props {
-  page?: number;
-}
-
-export default function HomeContent({ page = 1 }: Props) {
+export default function HomeContent() {
   const allPosts = getAllPostsMeta();
   const pinnedPosts = getPinnedPosts();
   const categories = getAllCategories();
   const tags = getAllTags();
-  const totalPages = Math.max(
-    1,
-    Math.ceil(allPosts.length / siteConfig.postsPerPage)
-  );
-  const pagePosts = paginate(allPosts, page, siteConfig.postsPerPage);
 
   return (
     <>
-      <Hero />
-
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 mt-10 relative z-10">
         {/* 置顶文章区 */}
-        {pinnedPosts.length > 0 && page === 1 && (
+        {pinnedPosts.length > 0 && (
           <section className="mb-12">
-            <h2 className="section-title mb-5">
-              <Flame className="w-5 h-5 text-rose-400" />
-              置顶推荐
-            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {pinnedPosts.slice(0, 2).map((post) => (
                 <PostCard key={post.slug} post={post} />
@@ -46,22 +30,10 @@ export default function HomeContent({ page = 1 }: Props) {
           </section>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {/* 主内容：文章列表 */}
           <div className="lg:col-span-2" id="posts">
-            <h2 className="section-title mb-5">
-              最新文章
-              <span className="text-sm font-sans font-normal text-ink-400 ml-2">
-                共 {allPosts.length} 篇
-              </span>
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {pagePosts.map((post) => (
-                <PostCard key={post.slug} post={post} />
-              ))}
-            </div>
-
-            {allPosts.length === 0 && (
+            {allPosts.length === 0 ? (
               <div className="paper-card p-12 text-center">
                 <p className="font-hand text-2xl text-ink-400">
                   这里还没有文字呢～
@@ -70,17 +42,20 @@ export default function HomeContent({ page = 1 }: Props) {
                   在 content/posts 目录下添加 .md 文件即可
                 </p>
               </div>
+            ) : (
+              <PostBrowser posts={allPosts} />
             )}
-
-            <Pagination
-              currentPage={page}
-              totalPages={totalPages}
-              basePath="/page"
-            />
           </div>
 
           {/* 侧边栏 */}
           <aside className="space-y-6">
+            {/* 个人信息 */}
+            <SidebarProfile
+              posts={allPosts.length}
+              categories={categories.length}
+              tags={tags.length}
+            />
+
             {/* 分类 */}
             <div className="paper-card p-5">
               <h3 className="section-title text-base mb-4">

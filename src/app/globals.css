@@ -123,75 +123,207 @@
     @apply -translate-y-0.5;
   }
 
-  /* 顶部社交标签条：从顶部垂下的彩色斜纹纸条（卷帘门式收起/拉开） */
-  .social-ribbons {
-    position: fixed;
-    top: 64px;
-    left: max(20px, calc(50vw - 512px + 20px));
-    align-items: flex-start;
-    gap: 10px;
-    z-index: 40;
-  }
-  /* 卷帘门收起：向下滚动时逐条向上卷起 */
-  .social-ribbons.rolled {
-    pointer-events: none;
-  }
-  .social-ribbons.rolled .social-ribbon {
-    transform: rotate(var(--r)) scaleY(0);
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(1) {
-    transition-delay: 0ms;
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(2) {
-    transition-delay: 40ms;
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(3) {
-    transition-delay: 80ms;
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(4) {
-    transition-delay: 120ms;
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(5) {
-    transition-delay: 160ms;
-  }
-  .social-ribbons.rolled .social-ribbon:nth-child(6) {
-    transition-delay: 200ms;
-  }
-  .social-ribbon {
+  /* 个人信息卡下的社交标签：彩色斜纹小纸条 */
+  .social-tag {
     --c: #a8c29b;
-    --h: 70px;
-    --r: 0deg;
-    width: 32px;
-    height: var(--h);
-    display: flex;
-    flex-direction: column;
+    display: inline-flex;
     align-items: center;
-    justify-content: flex-end;
-    padding-bottom: 10px;
-    border-radius: 0 0 7px 7px;
+    gap: 5px;
+    padding: 5px 10px;
+    border-radius: 6px;
     background-color: var(--c);
     background-image: repeating-linear-gradient(
       45deg,
       rgba(255, 255, 255, 0.22) 0 5px,
       rgba(255, 255, 255, 0) 5px 10px
     );
-    box-shadow:
-      0 2px 6px rgba(74, 70, 53, 0.18),
-      inset 0 -2px 4px rgba(74, 70, 53, 0.08);
-    transform: rotate(var(--r));
-    transform-origin: top center;
+    color: #fff;
+    font-size: 12px;
+    line-height: 1.4;
+    box-shadow: 0 2px 5px rgba(74, 70, 53, 0.18);
+    transform: rotate(var(--r, 0deg));
     transition:
-      height 0.3s ease,
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
-  /* 悬停：向下拉升一小段并回正到垂直 */
-  .social-ribbon:hover {
-    height: calc(var(--h) + 14px);
-    transform: rotate(0deg);
-    box-shadow:
-      0 6px 14px rgba(74, 70, 53, 0.25),
-      inset 0 -2px 4px rgba(74, 70, 53, 0.08);
+  .social-tag:hover {
+    transform: rotate(0deg) translateY(-2px);
+    box-shadow: 0 5px 12px rgba(74, 70, 53, 0.25);
+  }
+
+  /* 手绘分页按钮 */
+  .page-btn {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #fffdf6;
+    border: 1.5px dashed #b8b09a;
+    color: #6b6653;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: var(--font-serif);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .page-btn:nth-child(odd) {
+    transform: rotate(-1.2deg);
+  }
+  .page-btn:nth-child(even) {
+    transform: rotate(1deg);
+  }
+  .page-btn:hover {
+    border-color: #8fb57f;
+    color: #8fb57f;
+    transform: rotate(0) translateY(-2px);
+  }
+  .page-btn-active,
+  .page-btn-active:hover {
+    background: #8fb57f;
+    border: 1.5px solid #8fb57f;
+    color: #fff;
+    transform: rotate(0);
+  }
+
+  /* 回到顶部彩带标签：从底部边缘弹出 */
+  .back-to-top {
+    position: fixed;
+    bottom: 0;
+    right: max(24px, calc(50vw - 512px + 24px));
+    width: 40px;
+    height: 62px;
+    border: none;
+    border-radius: 8px 8px 0 0;
+    background-color: rgba(236, 172, 161, 0.92);
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.25) 0 4px,
+      transparent 4px 8px
+    );
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 40;
+    box-shadow: 0 -2px 8px rgba(74, 70, 53, 0.12);
+    transform: translateY(100%);
+    transition:
+      transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+      height 0.25s ease;
+  }
+  .back-to-top.show {
+    transform: translateY(0);
+  }
+  /* 悬停时向上拉长（底部保持贴合，不产生断层） */
+  .back-to-top.show:hover {
+    height: 68px;
+  }
+
+  /* 赞赏按钮与面板（手绘风） */
+  .donate-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    background: #fffdf6;
+    border: 2px dashed var(--dc, #a8a293);
+    border-radius: 999px;
+    color: var(--dc, #a8a293);
+    cursor: pointer;
+    transition: all 0.25s ease;
+    transform: rotate(-1deg);
+  }
+  .donate-btn:nth-child(2) {
+    transform: rotate(1.2deg);
+  }
+  .donate-btn:hover,
+  .donate-btn-active {
+    background: var(--dc);
+    color: #fff;
+    transform: rotate(0) translateY(-2px);
+  }
+  .donate-panel {
+    position: relative;
+    margin: 20px auto 0;
+    width: fit-content;
+    padding: 20px 28px 16px;
+    background: #fffdf6;
+    border: 1px solid rgba(243, 235, 216, 0.8);
+    transform: rotate(-0.6deg);
+    animation: donate-pop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .donate-panel::before {
+    content: "";
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    width: 72px;
+    height: 18px;
+    transform: translateX(-50%) rotate(2.5deg);
+    background-color: rgba(247, 215, 124, 0.85);
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.25) 0 4px,
+      transparent 4px 8px
+    );
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(74, 70, 53, 0.15);
+  }
+  @keyframes donate-pop {
+    from {
+      transform: rotate(-0.6deg) scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: rotate(-0.6deg) scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* 图片灯箱 */
+  .lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background: rgba(60, 57, 46, 0.75);
+    backdrop-filter: blur(4px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    cursor: zoom-out;
+    animation: lightbox-in 0.2s ease;
+  }
+  .lightbox-img {
+    max-width: 90vw;
+    max-height: 84vh;
+    background: #fffdf6;
+    padding: 12px;
+    border: 1px solid rgba(243, 235, 216, 0.8);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    transform: rotate(-0.5deg);
+  }
+  .lightbox-tip {
+    font-family: var(--font-hand);
+    color: rgba(255, 253, 246, 0.8);
+    font-size: 15px;
+  }
+  @keyframes lightbox-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  /* 文章图片可点击提示 */
+  .prose-content img {
+    cursor: zoom-in;
   }
 
   /* 冰箱贴贴纸（可拖拽） */
@@ -225,12 +357,38 @@
     cursor: grabbing;
   }
 
-  /* 贴纸式标签 */
+  /* 贴纸式标签：多彩 dashed 边框 */
   .sticker-tag {
-    @apply inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md
-           bg-paper-100 text-ink-500 border border-paper-200
-           hover:bg-sage-100 hover:text-sage-600 hover:border-sage-200
-           transition-colors duration-200 cursor-pointer;
+    --tc: #8fb57f;
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 7px;
+    background: #fffdf6;
+    border: 1.5px dashed var(--tc);
+    color: var(--tc);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .sticker-tag:hover {
+    background: var(--tc);
+    color: #fff;
+    transform: translateY(-1px);
+  }
+  /* 多彩轮换：鼠尾草绿 / 玫瑰粉 / 天空蓝 / 奶黄 */
+  .sticker-tag:nth-child(4n + 1) {
+    --tc: #8fb57f;
+  }
+  .sticker-tag:nth-child(4n + 2) {
+    --tc: #e08e86;
+  }
+  .sticker-tag:nth-child(4n + 3) {
+    --tc: #6fa8d0;
+  }
+  .sticker-tag:nth-child(4n + 4) {
+    --tc: #dfae3e;
   }
 
   /* 便签纸效果 */
@@ -263,10 +421,18 @@
     @apply font-hand text-ink-500;
   }
 
-  /* 链接基础样式 */
+  /* 链接基础样式：手绘波浪下划线 */
   .prose-link {
-    @apply text-sky-500 underline decoration-sky-200 underline-offset-2
-           hover:text-sky-600 hover:decoration-sky-400 transition-colors;
+    color: #5b9bd5;
+    text-decoration: underline wavy;
+    text-decoration-color: rgba(91, 155, 213, 0.55);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 4px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  }
+  .prose-link:hover {
+    color: #3f83bd;
+    text-decoration-color: #3f83bd;
   }
 
   /* 章节标题 */
@@ -341,15 +507,35 @@
   @apply border-l-4 border-sage-300 bg-sage-50/50 pl-4 py-2 my-4 rounded-r-lg 
          italic text-ink-500;
 }
+/* 行内代码：奶黄底 + 手绘 dashed 描边 */
 .prose-content code {
-  @apply bg-paper-200 text-ink-600 px-1.5 py-0.5 rounded text-sm font-mono;
+  background: rgba(247, 238, 205, 0.7);
+  color: #6b6653;
+  border: 1px dashed #cbbf92;
+  padding: 0.1rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.85em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
+/* 代码块：纸张底 + 手绘 dashed 边框 */
 .prose-content pre {
-  @apply bg-ink-800 text-paper-100 p-4 rounded-xl my-6 overflow-x-auto
-         text-sm leading-relaxed;
+  background: #fdfaf0;
+  color: #4a4635;
+  border: 2px dashed #a8a289;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  box-shadow: 2px 3px 0 rgba(74, 70, 53, 0.06);
 }
 .prose-content pre code {
-  @apply bg-transparent text-inherit p-0;
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  border: none;
+  border-radius: 0;
 }
 .prose-content table {
   @apply w-full my-6 border-collapse;
@@ -364,8 +550,21 @@
 .prose-content img {
   @apply rounded-xl shadow-paper my-6 max-w-full;
 }
+/* 分割线：手绘波浪线 */
 .prose-content hr {
-  @apply my-8 border-paper-300 border-dashed;
+  border: none;
+  height: 18px;
+  margin: 2rem 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='18' viewBox='0 0 120 18'%3E%3Cpath d='M2 10 Q 9 4 16 10 T 30 10 Q 37 5 44 10 T 58 10 Q 65 4 72 10 T 86 10 Q 93 5 100 10 T 114 10' fill='none' stroke='%23b0a98d' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-position: center;
+}
+/* <u> 下划线：手绘波浪 */
+.prose-content u {
+  text-decoration: underline wavy;
+  text-decoration-color: rgba(176, 169, 141, 0.8);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
 }
 .prose-content input[type="checkbox"] {
   @apply mr-2 accent-sage-500;

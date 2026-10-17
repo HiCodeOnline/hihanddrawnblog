@@ -18,6 +18,9 @@ import {
   getAdjacentPosts,
 } from "@/lib/posts";
 import type { HeadingItem } from "@/types";
+import DonateSection from "@/components/DonateSection";
+import Utterances from "@/components/Utterances";
+import ImageLightbox from "@/components/ImageLightbox";
 
 interface Props {
   /** 年/月/日/slug 路径段，如 ["2026", "10", "05", "autumn-coffee"] */
@@ -100,7 +103,7 @@ export default async function PostPage({ params }: Props) {
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-5">
         {/* 正文 */}
         <div className="paper-card p-6 sm:p-10">
           <div
@@ -157,6 +160,9 @@ export default async function PostPage({ params }: Props) {
         )}
       </div>
 
+      {/* 赞赏 */}
+      <DonateSection />
+
       {/* 上一篇 / 下一篇 */}
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {prev ? (
@@ -192,6 +198,12 @@ export default async function PostPage({ params }: Props) {
           <div />
         )}
       </div>
+
+      {/* 评论 */}
+      <Utterances />
+
+      {/* 图片灯箱 */}
+      <ImageLightbox />
     </article>
   );
 }

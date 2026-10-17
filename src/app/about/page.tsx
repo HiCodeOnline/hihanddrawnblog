@@ -1,6 +1,7 @@
 import { siteConfig } from "@/config/site";
 import { getSiteStats } from "@/lib/posts";
 import PageHeader from "@/components/PageHeader";
+import DonationWall from "@/components/DonationWall";
 import { User, Heart, Coffee } from "lucide-react";
 
 export default function AboutPage() {
@@ -89,6 +90,9 @@ export default function AboutPage() {
           </p>
         </div>
       </div>
+
+      {/* 赞赏墙 */}
+      <DonationWall />
     </div>
   );
 }

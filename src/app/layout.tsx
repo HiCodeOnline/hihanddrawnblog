@@ -4,7 +4,7 @@ import { siteConfig } from "@/config/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingStickers from "@/components/FloatingStickers";
-import SocialRibbons from "@/components/SocialRibbons";
+import BackToTop from "@/components/BackToTop";
 
 export const metadata: Metadata = {
   title: {
@@ -44,10 +44,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen flex flex-col">
         <Header />
-        <SocialRibbons />
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingStickers />
+        <BackToTop />
       </body>
     </html>
   );

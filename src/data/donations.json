@@ -1,0 +1,22 @@
+[
+  {
+    "name": "小丸子",
+    "amount": 6.6,
+    "channel": "wechat",
+    "date": "2026-10-12",
+    "message": "文章很治愈，继续加油！"
+  },
+  {
+    "name": "CoffeeLover",
+    "amount": 15,
+    "channel": "alipay",
+    "date": "2026-10-08",
+    "message": "请你喝杯咖啡 ☕"
+  },
+  {
+    "name": "匿名小伙伴",
+    "amount": 8.8,
+    "channel": "wechat",
+    "date": "2026-09-28"
+  }
+]

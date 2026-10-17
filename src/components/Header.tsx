@@ -14,8 +14,8 @@ export default function Header() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 bg-paper-100/80 backdrop-blur-md border-b border-paper-200/60">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+    <header className="relative z-50 p-3">
+      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-200 to-butter-200 flex items-center justify-center shadow-sm group-hover:rotate-6 transition-transform">
             <PenLine className="w-5 h-5 text-ink-600" />
@@ -54,7 +54,7 @@ export default function Header() {
 
       {/* 移动端菜单 */}
       {open && (
-        <nav className="md:hidden border-t border-paper-200/60 bg-paper-100 px-4 py-3 space-y-1">
+        <nav className="md:hidden max-w-5xl mx-auto bg-[#fffdf6] border border-paper-200/60 border-t-0 shadow-[0_2px_12px_rgba(74,70,53,0.10)] px-4 py-3 space-y-1">
           {siteConfig.nav.map((item) => (
             <Link
               key={item.href}

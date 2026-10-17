@@ -16,6 +16,18 @@ export const siteConfig = {
     email: "hello@hiprofile.dev",
     rss: "/feed.xml",
   },
+  // 赞赏二维码（替换 public/ 下对应图片为你的真实赞赏码）
+  donate: {
+    wechat: "/wechat-qr.svg",
+    alipay: "/alipay-qr.svg",
+  },
+  // utterances 评论（把 repo 改成你的 GitHub 仓库，如 "name/blog-comments"）
+  utterances: {
+    repo: "your-username/your-repo",
+    issueTerm: "pathname",
+    theme: "github-light",
+    label: "comment",
+  },
   nav: [
     { name: "首页", href: "/" },
     { name: "归档", href: "/archives" },
