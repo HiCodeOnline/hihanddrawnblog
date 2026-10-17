@@ -537,15 +537,40 @@
   border: none;
   border-radius: 0;
 }
+/* 手绘表格：纸张底 + dashed 手画格线 */
 .prose-content table {
-  @apply w-full my-6 border-collapse;
+  width: 100%;
+  margin: 1.5rem 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #fffdf6;
+  border: 2px dashed #a8a289;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 0.925rem;
 }
 .prose-content th,
 .prose-content td {
-  @apply border border-paper-300 px-4 py-2 text-left;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  border-bottom: 1.5px dashed #c9c2a4;
 }
-.prose-content th {
-  @apply bg-paper-100 font-semibold;
+.prose-content th + th,
+.prose-content td + td {
+  border-left: 1.5px dashed #c9c2a4;
+}
+.prose-content thead th {
+  background: rgba(247, 238, 205, 0.6);
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: #4a4635;
+  border-bottom: 2px dashed #a8a289;
+}
+.prose-content tbody tr:last-child td {
+  border-bottom: none;
+}
+.prose-content tbody tr:hover td {
+  background: rgba(168, 194, 155, 0.08);
 }
 .prose-content img {
   @apply rounded-xl shadow-paper my-6 max-w-full;
