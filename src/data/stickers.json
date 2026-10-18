@@ -1,0 +1,8 @@
+[
+  { "id": "sakura", "emoji": "🌸", "size": 42, "x": 3, "y": 30, "rotate": -8 },
+  { "id": "coffee", "emoji": "☕", "size": 40, "x": 95, "y": 26, "rotate": 6 },
+  { "id": "star", "emoji": "⭐", "size": 38, "x": 2.5, "y": 55, "rotate": 10 },
+  { "id": "clover", "emoji": "🍀", "size": 40, "x": 96, "y": 52, "rotate": -12 },
+  { "id": "bear", "emoji": "🐻", "size": 44, "x": 3.5, "y": 80, "rotate": 5 },
+  { "id": "moon", "emoji": "🌙", "size": 40, "x": 95, "y": 78, "rotate": -6 }
+]

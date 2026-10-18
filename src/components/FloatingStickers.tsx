@@ -1,27 +1,25 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import stickersData from "@/data/stickers.json";
 
 interface StickerDef {
   id: string;
-  emoji: string;
+  /** 贴纸图片地址（如 /stickers/flower.png），优先于 emoji */
+  src?: string;
+  /** 无图片时使用 emoji 字符 */
+  emoji?: string;
+  /** 贴纸尺寸（px） */
+  size: number;
   /** 初始位置（视口百分比），默认落在页面左右两侧边缘，避开中间卡片区域 */
-  xPct: number;
-  yPct: number;
+  x: number;
+  y: number;
   rotate: number;
 }
 
-const STICKERS: StickerDef[] = [
-  { id: "sakura", emoji: "🌸", xPct: 3, yPct: 30, rotate: -8 },
-  { id: "coffee", emoji: "☕", xPct: 95, yPct: 26, rotate: 6 },
-  { id: "star", emoji: "⭐", xPct: 2.5, yPct: 55, rotate: 10 },
-  { id: "clover", emoji: "🍀", xPct: 96, yPct: 52, rotate: -12 },
-  { id: "bear", emoji: "🐻", xPct: 3.5, yPct: 80, rotate: 5 },
-  { id: "moon", emoji: "🌙", xPct: 95, yPct: 78, rotate: -6 },
-];
+const STICKERS = stickersData as StickerDef[];
 
 const STORAGE_KEY = "fridge-stickers";
-const SIZE = 52;
 
 type PosMap = Record<string, { x: number; y: number }>;
 
@@ -36,6 +34,7 @@ export default function FloatingStickers() {
     id: string;
     offsetX: number;
     offsetY: number;
+    size: number;
   } | null>(null);
 
   const persist = () => {
@@ -59,15 +58,15 @@ export default function FloatingStickers() {
     }
     for (const s of STICKERS) {
       const fallback = {
-        x: (s.xPct / 100) * window.innerWidth,
-        y: (s.yPct / 100) * window.innerHeight,
+        x: (s.x / 100) * window.innerWidth,
+        y: (s.y / 100) * window.innerHeight,
       };
       const p = saved?.[s.id];
       init[s.id] =
         p && typeof p.x === "number" && typeof p.y === "number"
           ? {
-              x: clamp(p.x, 0, window.innerWidth - SIZE),
-              y: clamp(p.y, 0, window.innerHeight - SIZE),
+              x: clamp(p.x, 0, window.innerWidth - s.size),
+              y: clamp(p.y, 0, window.innerHeight - s.size),
             }
           : fallback;
     }
@@ -81,8 +80,16 @@ export default function FloatingStickers() {
     const onMove = (e: PointerEvent) => {
       const drag = dragRef.current;
       if (!drag) return;
-      const x = clamp(e.clientX - drag.offsetX, 0, window.innerWidth - SIZE);
-      const y = clamp(e.clientY - drag.offsetY, 0, window.innerHeight - SIZE);
+      const x = clamp(
+        e.clientX - drag.offsetX,
+        0,
+        window.innerWidth - drag.size
+      );
+      const y = clamp(
+        e.clientY - drag.offsetY,
+        0,
+        window.innerHeight - drag.size
+      );
       const next = { ...(positionsRef.current ?? {}), [drag.id]: { x, y } };
       positionsRef.current = next;
       setPositions(next);
@@ -120,6 +127,9 @@ export default function FloatingStickers() {
               {
                 left: p.x,
                 top: p.y,
+                width: s.size,
+                height: s.size,
+                fontSize: s.size * 0.85,
                 "--r": `${s.rotate}deg`,
               } as React.CSSProperties
             }
@@ -132,10 +142,16 @@ export default function FloatingStickers() {
                 id: s.id,
                 offsetX: e.clientX - rect.left,
                 offsetY: e.clientY - rect.top,
+                size: s.size,
               };
             }}
           >
-            {s.emoji}
+            {s.src ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={s.src} alt="" draggable={false} />
+            ) : (
+              s.emoji
+            )}
           </div>
         );
       })}

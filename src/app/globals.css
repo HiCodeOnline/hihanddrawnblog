@@ -326,22 +326,14 @@
     cursor: zoom-in;
   }
 
-  /* 冰箱贴贴纸（可拖拽） */
+  /* 散落的贴纸（可拖拽，无边框背景，尺寸/位置由内联样式控制） */
   .fridge-sticker {
     position: fixed;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 26px;
     line-height: 1;
-    box-shadow:
-      0 2px 6px rgba(74, 70, 53, 0.18),
-      inset 0 -3px 6px rgba(74, 70, 53, 0.08);
-    border: 2px solid rgba(232, 221, 192, 0.8);
+    filter: drop-shadow(0 2px 3px rgba(74, 70, 53, 0.25));
     cursor: grab;
     user-select: none;
     -webkit-user-select: none;
@@ -349,6 +341,12 @@
     z-index: 40;
     transform: rotate(var(--r, 0deg));
     transition: transform 0.2s ease;
+  }
+  .fridge-sticker img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
   }
   .fridge-sticker:hover {
     transform: rotate(var(--r, 0deg)) scale(1.15);
@@ -507,15 +505,15 @@
   @apply border-l-4 border-sage-300 bg-sage-50/50 pl-4 py-2 my-4 rounded-r-lg 
          italic text-ink-500;
 }
-/* 行内代码：奶黄底 + 手绘 dashed 描边 */
+/* 行内代码：奶黄底 + 手绘 dashed 描边 + 手写体 */
 .prose-content code {
   background: rgba(247, 238, 205, 0.7);
   color: #6b6653;
   border: 1px dashed #cbbf92;
-  padding: 0.1rem 0.4rem;
+  padding: 0.05rem 0.45rem;
   border-radius: 6px;
-  font-size: 0.85em;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.95em;
+  font-family: var(--font-hand);
 }
 /* 代码块：纸张底 + 手绘 dashed 边框 */
 .prose-content pre {
@@ -536,6 +534,8 @@
   padding: 0;
   border: none;
   border-radius: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: inherit;
 }
 /* 手绘表格：纸张底 + dashed 手画格线 */
 .prose-content table {

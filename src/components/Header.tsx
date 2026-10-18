@@ -17,11 +17,8 @@ export default function Header() {
     <header className="relative z-50 p-3">
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-200 to-butter-200 flex items-center justify-center shadow-sm group-hover:rotate-6 transition-transform">
-            <PenLine className="w-5 h-5 text-ink-600" />
-          </span>
           <span className="font-serif font-bold text-lg text-ink-700">
-            {siteConfig.name}
+            <img src="/logo.svg" alt={siteConfig.name} className="h-9" />
           </span>
         </Link>
 
