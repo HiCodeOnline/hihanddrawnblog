@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Github, Youtube, Instagram, Mail, Rss } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { t } from "@/i18n";
 
 /** X（原 Twitter）图标 */
 function XIcon({ className }: { className?: string }) {
@@ -22,7 +23,7 @@ const SOCIALS = [
   { key: "x", label: "X", color: "#5b6470", Icon: XIcon },
   { key: "youtube", label: "YouTube", color: "#ec7a6e", Icon: Youtube },
   { key: "instagram", label: "Instagram", color: "#d9a3c0", Icon: Instagram },
-  { key: "email", label: "邮箱", color: "#a8c29b", Icon: Mail },
+  { key: "email", label: t.sidebar.emailLabel, color: "#a8c29b", Icon: Mail },
   { key: "rss", label: "RSS", color: "#f0b95e", Icon: Rss },
 ];
 
@@ -46,9 +47,9 @@ export default function SidebarProfile({ posts, categories, tags }: Props) {
   });
 
   const stats = [
-    { label: "文章", value: posts, href: "/" },
-    { label: "分类", value: categories, href: "/categories" },
-    { label: "标签", value: tags, href: "/tags" },
+    { label: t.common.posts, value: posts, href: "/" },
+    { label: t.common.categories, value: categories, href: "/categories" },
+    { label: t.common.tags, value: tags, href: "/tags" },
   ];
 
   return (

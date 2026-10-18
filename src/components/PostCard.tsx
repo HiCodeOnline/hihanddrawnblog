@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Calendar, Clock, Folder, Pin } from "lucide-react";
 import { format } from "date-fns";
-import { zhCN } from "date-fns/locale";
 import type { PostMeta } from "@/types";
+import { t, dateLocale } from "@/i18n";
 
 interface Props {
   post: PostMeta;
@@ -11,7 +11,7 @@ interface Props {
 
 export default function PostCard({ post, featured = false }: Props) {
   const dateStr = post.date
-    ? format(new Date(post.date), "yyyy-MM-dd", { locale: zhCN })
+    ? format(new Date(post.date), t.dateFormat.card, { locale: dateLocale })
     : "";
 
   return (
@@ -39,7 +39,7 @@ export default function PostCard({ post, featured = false }: Props) {
           {post.pinned && (
             <span className="inline-flex items-center gap-1 text-rose-500 font-medium">
               <Pin className="w-3 h-3 fill-rose-500" />
-              置顶
+              {t.post.pinned}
             </span>
           )}
           {post.category && (

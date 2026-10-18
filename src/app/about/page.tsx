@@ -3,6 +3,7 @@ import { getSiteStats } from "@/lib/posts";
 import PageHeader from "@/components/PageHeader";
 import DonationWall from "@/components/DonationWall";
 import { User, Heart, Coffee } from "lucide-react";
+import { t } from "@/i18n";
 
 export default function AboutPage() {
   const stats = getSiteStats();
@@ -27,15 +28,15 @@ export default function AboutPage() {
         <div className="mt-6 flex items-center justify-center gap-6 text-sm text-ink-400">
           <span className="inline-flex items-center gap-1.5">
             <Heart className="w-4 h-4 text-rose-400" />
-            热爱生活
+            {t.about.hobbyLife}
           </span>
           <span className="inline-flex items-center gap-1.5">
             <Coffee className="w-4 h-4 text-butter-500" />
-            咖啡续命
+            {t.about.hobbyCoffee}
           </span>
           <span className="inline-flex items-center gap-1.5">
             <User className="w-4 h-4 text-sky-500" />
-            记录日常
+            {t.about.hobbyDaily}
           </span>
         </div>
       </div>
@@ -43,10 +44,10 @@ export default function AboutPage() {
       {/* 数据统计 */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
         {[
-          { label: "文章", value: stats.postCount },
-          { label: "分类", value: stats.categoryCount },
-          { label: "标签", value: stats.tagCount },
-          { label: "字数(k)", value: Math.round(stats.totalWords / 1000) },
+          { label: t.common.posts, value: stats.postCount },
+          { label: t.common.categories, value: stats.categoryCount },
+          { label: t.common.tags, value: stats.tagCount },
+          { label: t.about.wordsK, value: Math.round(stats.totalWords / 1000) },
         ].map((s) => (
           <div key={s.label} className="paper-card p-4 text-center">
             <p className="font-serif text-2xl font-bold text-sage-600">
@@ -60,28 +61,14 @@ export default function AboutPage() {
       {/* 自我介绍正文 */}
       <div className="paper-card p-8">
         <div className="prose-content">
-          <h2>你好呀 👋</h2>
-          <p>
-            欢迎来到我的小小博客。这里是我记录生活、整理思绪的地方，就像一本摊开的手帐本，
-            每一页都写满了日常的碎碎念。
-          </p>
-          <p>
-            我相信文字有治愈的力量，也相信慢下来才能看见生活的美好。
-            希望这里的每一篇文章，都能给你带来一点点温暖。
-          </p>
-          <h2>这个博客</h2>
-          <p>
-            这是一个使用 Next.js 构建的静态博客，采用清新自然的手帐风格设计。
-            所有文章都以 Markdown 格式书写，构建时自动生成静态页面。
-          </p>
-          <blockquote>
-            慢一点，再慢一点。把日子过成诗，把生活写成文。
-          </blockquote>
-          <h2>联系我</h2>
-          <p>
-            如果你喜欢这里的内容，或者想和我聊聊，欢迎通过页脚的方式联系我。
-            也可以在文章下方留言，我会认真回复每一条。
-          </p>
+          <h2>{t.about.greeting}</h2>
+          <p>{t.about.intro1}</p>
+          <p>{t.about.intro2}</p>
+          <h2>{t.about.blogTitle}</h2>
+          <p>{t.about.blogDesc}</p>
+          <blockquote>{t.about.quote}</blockquote>
+          <h2>{t.about.contactTitle}</h2>
+          <p>{t.about.contactDesc}</p>
         </div>
       </div>
 

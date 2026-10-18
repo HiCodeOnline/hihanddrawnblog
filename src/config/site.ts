@@ -37,14 +37,19 @@ export const siteConfig = {
     collapsible: true,
     copyable: true,
   },
+  /**
+   * 导航菜单：
+   * - key 对应 src/i18n 字典 nav 下的键，显示文案随语言自动切换
+   * - 自定义外部链接可改用 { name: "显示名", href: "https://..." }
+   */
   nav: [
-    { name: "首页", href: "/" },
-    { name: "图集", href: "/gallery" },
-    { name: "朋友圈", href: "/friends" },
-    { name: "留言", href: "/messages" },
-    { name: "归档", href: "/archives" },
-    { name: "关于", href: "/about" },
-  ],
+    { key: "home", href: "/" },
+    { key: "gallery", href: "/gallery" },
+    { key: "friends", href: "/friends" },
+    { key: "messages", href: "/messages" },
+    { key: "archives", href: "/archives" },
+    { key: "about", href: "/about" },
+  ] as { key?: string; name?: string; href: string }[],
   postsPerPage: 6,
 };
 

@@ -11,12 +11,12 @@ import {
   FileText,
 } from "lucide-react";
 import { format } from "date-fns";
-import { zhCN } from "date-fns/locale";
 import {
   getPostByHref,
   getAllPostsMeta,
   getAdjacentPosts,
 } from "@/lib/posts";
+import { t, dateLocale } from "@/i18n";
 import type { HeadingItem } from "@/types";
 import DonateSection from "@/components/DonateSection";
 import Giscus from "@/components/Giscus";
@@ -56,7 +56,7 @@ export default async function PostPage({ params }: Props) {
   const headings = extractHeadings(post.html);
 
   const dateStr = post.date
-    ? format(new Date(post.date), "yyyy 年 MM 月 dd 日", { locale: zhCN })
+    ? format(new Date(post.date), t.dateFormat.post, { locale: dateLocale })
     : "";
 
   return (
@@ -67,7 +67,7 @@ export default async function PostPage({ params }: Props) {
         className="inline-flex items-center gap-1.5 text-sm text-ink-400 hover:text-sage-600 mb-6 transition-colors"
       >
         <ArrowLeft className="w-4 h-4" />
-        返回首页
+        {t.post.backHome}
       </Link>
 
       {/* 文章头部 */}
@@ -99,7 +99,7 @@ export default async function PostPage({ params }: Props) {
           </span>
           <span className="inline-flex items-center gap-1.5">
             <FileText className="w-4 h-4" />
-            {post.wordCount} 字
+            {t.post.words(post.wordCount)}
           </span>
         </div>
       </header>
@@ -117,7 +117,7 @@ export default async function PostPage({ params }: Props) {
             <div className="mt-10 pt-6 border-t border-paper-200">
               <div className="flex items-center gap-2 text-sm text-ink-500 mb-3">
                 <Tag className="w-4 h-4" />
-                标签
+                {t.post.tagsTitle}
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {post.tags.map((tag) => (
@@ -139,7 +139,7 @@ export default async function PostPage({ params }: Props) {
           <aside className="hidden lg:block">
             <div className="sticky top-24 paper-card p-4">
               <p className="text-xs font-semibold text-ink-400 uppercase tracking-wider mb-3">
-                目录
+                {t.post.toc}
               </p>
               <nav className="space-y-1.5 text-sm">
                 {headings.map((h) => (
@@ -173,7 +173,7 @@ export default async function PostPage({ params }: Props) {
           >
             <span className="inline-flex items-center gap-1 text-xs text-ink-400 mb-2">
               <ChevronLeft className="w-3 h-3" />
-              上一篇
+              {t.post.prev}
             </span>
             <p className="font-serif font-medium text-ink-700 group-hover:text-sage-600 transition-colors line-clamp-1">
               {prev.title}
@@ -188,7 +188,7 @@ export default async function PostPage({ params }: Props) {
             className="paper-card p-5 group text-right"
           >
             <span className="inline-flex items-center gap-1 text-xs text-ink-400 mb-2">
-              下一篇
+              {t.post.next}
               <ChevronRight className="w-3 h-3" />
             </span>
             <p className="font-serif font-medium text-ink-700 group-hover:text-sage-600 transition-colors line-clamp-1">

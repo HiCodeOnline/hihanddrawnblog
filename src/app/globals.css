@@ -5,8 +5,8 @@
 @layer base {
   :root {
     --font-sans: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "PingFang SC", serif;
-    --font-serif: "Ma Shan Zheng", "KaiTi", "STKaiti", cursive;
-    --font-hand: "Zhi Mang Xing", "Ma Shan Zheng", "KaiTi", "STKaiti", cursive;
+    --font-serif: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "PingFang SC", serif;
+    --font-hand: "ZCOOL XiaoWei", "KaiTi", "STKaiti", "PingFang SC", serif;
   }
 
   html {

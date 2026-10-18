@@ -4,5 +4,6 @@
   { "id": "star", "emoji": "⭐", "size": 38, "x": 2.5, "y": 55, "rotate": 10 },
   { "id": "clover", "emoji": "🍀", "size": 40, "x": 96, "y": 52, "rotate": -12 },
   { "id": "bear", "emoji": "🐻", "size": 44, "x": 3.5, "y": 80, "rotate": 5 },
-  { "id": "moon", "emoji": "🌙", "size": 40, "x": 95, "y": 78, "rotate": -6 }
+  { "id": "moon", "emoji": "🌙", "size": 40, "x": 95, "y": 78, "rotate": -6 },
+  { "id": "logo", "src": "/logo.svg", "size": 180, "x": 95, "y": 78, "rotate": -6 }
 ]

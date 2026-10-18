@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Tags } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { getAllTags } from "@/lib/posts";
+import { t } from "@/i18n";
 
 export default function TagsPage() {
   const tags = getAllTags();
@@ -9,8 +10,8 @@ export default function TagsPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <PageHeader
-        title="全部标签"
-        subtitle={`${tags.length} 个标签`}
+        title={t.tagsPage.title}
+        subtitle={t.tagsPage.subtitle(tags.length)}
         icon={<Tags className="w-8 h-8 text-rose-400" />}
       />
 
@@ -41,7 +42,7 @@ export default function TagsPage() {
 
       {tags.length === 0 && (
         <div className="paper-card p-12 text-center">
-          <p className="font-hand text-xl text-ink-400">还没有标签哦～</p>
+          <p className="font-hand text-xl text-ink-400">{t.tagsPage.empty}</p>
         </div>
       )}
     </div>

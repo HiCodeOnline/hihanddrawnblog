@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { HeartHandshake } from "lucide-react";
 import friendsData from "@/data/friends.json";
 import Giscus from "@/components/Giscus";
+import { t } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: "朋友圈",
-  description: "交换友链，串串门",
+  title: t.friends.metaTitle,
+  description: t.friends.metaDesc,
 };
 
 interface FriendLink {
@@ -22,11 +23,11 @@ export default function FriendsPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex items-center gap-2 mb-2">
         <HeartHandshake className="w-5 h-5 text-sage-500" />
-        <h1 className="font-serif text-2xl font-bold text-ink-700">朋友圈</h1>
-        <span className="text-sm text-ink-400">共 {FRIENDS.length} 位邻居</span>
+        <h1 className="font-serif text-2xl font-bold text-ink-700">{t.friends.title}</h1>
+        <span className="text-sm text-ink-400">{t.friends.count(FRIENDS.length)}</span>
       </div>
       <p className="text-sm text-ink-400 mb-8">
-        常来串门的邻居们，去他们的院子里坐坐吧～
+        {t.friends.subtitle}
       </p>
 
       {/* 友链卡片墙 */}
@@ -69,18 +70,18 @@ export default function FriendsPage() {
 
       {/* 交换友链说明 */}
       <div className="sticky-note mb-10">
-        <p className="font-serif font-bold text-ink-700 mb-2">🔗 交换友链</p>
+        <p className="font-serif font-bold text-ink-700 mb-2">{t.friends.exchangeTitle}</p>
         <p className="text-sm text-ink-500 leading-relaxed">
-          欢迎交换友链！在下方评论区按以下格式留言，博主看到后会尽快添加：
+          {t.friends.exchangeDesc}
         </p>
         <p className="mt-2 text-sm text-ink-600 bg-paper-100/70 rounded-md px-3 py-2 font-mono text-xs leading-relaxed">
-          名称：你的网站名
+          {t.friends.formatName}
           <br />
-          链接：https://你的地址
+          {t.friends.formatUrl}
           <br />
-          头像：头像图片地址（可选）
+          {t.friends.formatAvatar}
           <br />
-          简介：一句话介绍（可选）
+          {t.friends.formatDesc}
         </p>
       </div>
 

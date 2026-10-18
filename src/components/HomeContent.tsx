@@ -9,6 +9,7 @@ import {
   getAllTags,
   getPinnedPosts,
 } from "@/lib/posts";
+import { t } from "@/i18n";
 
 export default function HomeContent() {
   const allPosts = getAllPostsMeta();
@@ -36,10 +37,10 @@ export default function HomeContent() {
             {allPosts.length === 0 ? (
               <div className="paper-card p-12 text-center">
                 <p className="font-hand text-2xl text-ink-400">
-                  这里还没有文字呢～
+                  {t.home.emptyTitle}
                 </p>
                 <p className="mt-2 text-sm text-ink-400">
-                  在 content/posts 目录下添加 .md 文件即可
+                  {t.home.emptyHint}
                 </p>
               </div>
             ) : (
@@ -60,7 +61,7 @@ export default function HomeContent() {
             <div className="paper-card p-5">
               <h3 className="section-title text-base mb-4">
                 <FolderOpen className="w-4 h-4 text-sage-500" />
-                分类
+                {t.home.categoriesTitle}
               </h3>
               <div className="space-y-2">
                 {categories.slice(0, 6).map((cat) => (
@@ -82,7 +83,7 @@ export default function HomeContent() {
                     href="/categories"
                     className="block text-center text-xs text-ink-400 hover:text-sage-500 pt-2"
                   >
-                    查看全部分类 →
+                    {t.home.viewAllCategories}
                   </Link>
                 )}
               </div>
@@ -92,7 +93,7 @@ export default function HomeContent() {
             <div className="paper-card p-5">
               <h3 className="section-title text-base mb-4">
                 <Tags className="w-4 h-4 text-rose-400" />
-                热门标签
+                {t.home.hotTags}
               </h3>
               <div className="flex flex-wrap gap-1.5">
                 {tags.slice(0, 14).map((tag) => (
@@ -111,17 +112,17 @@ export default function HomeContent() {
                   href="/tags"
                   className="block text-center text-xs text-ink-400 hover:text-sage-500 mt-3"
                 >
-                  查看全部标签 →
-                </Link>
+                  {t.home.viewAllTags}
+                  </Link>
               )}
             </div>
 
             {/* 手帐便签 */}
             <div className="sticky-note">
               <p className="hand-text text-sm leading-relaxed text-ink-600">
-                慢一点，再慢一点。
+                {t.home.noteLine1}
                 <br />
-                把日子过成诗，把生活写成文。
+                {t.home.noteLine2}
               </p>
             </div>
           </aside>

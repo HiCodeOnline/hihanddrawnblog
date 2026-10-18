@@ -29,20 +29,6 @@ export default function Footer() {
             >
               <Github className="w-4 h-4" />
             </a>
-            <a
-              href={`mailto:${siteConfig.social.email}`}
-              className="w-9 h-9 rounded-full bg-white border border-paper-200 flex items-center justify-center text-ink-400 hover:text-ink-700 hover:border-rose-300 transition-colors"
-              aria-label="Email"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <a
-              href={siteConfig.social.rss}
-              className="w-9 h-9 rounded-full bg-white border border-paper-200 flex items-center justify-center text-ink-400 hover:text-ink-700 hover:border-butter-300 transition-colors"
-              aria-label="RSS"
-            >
-              <Rss className="w-4 h-4" />
-            </a>
           </div>
         </div>
 

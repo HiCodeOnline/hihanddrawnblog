@@ -3,6 +3,7 @@ import { Tags } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import PostCard from "@/components/PostCard";
 import { getAllTags, getPostsByTag } from "@/lib/posts";
+import { t } from "@/i18n";
 
 interface Props {
   params: { tag: string };
@@ -16,7 +17,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Props) {
   return {
-    title: `标签：${decodeURIComponent(params.tag)}`,
+    title: t.tagsPage.metaTitle(decodeURIComponent(params.tag)),
   };
 }
 
@@ -28,7 +29,7 @@ export default function TagPage({ params }: Props) {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <PageHeader
         title={`#${tag}`}
-        subtitle={`共 ${posts.length} 篇文章`}
+        subtitle={t.tagsPage.total(posts.length)}
         icon={<Tags className="w-8 h-8 text-rose-400" />}
       />
 
@@ -36,7 +37,7 @@ export default function TagPage({ params }: Props) {
         href="/tags"
         className="inline-flex items-center gap-1 text-sm text-ink-400 hover:text-sage-600 mb-6"
       >
-        ← 返回标签列表
+        {t.tagsPage.backToList}
       </Link>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -47,7 +48,7 @@ export default function TagPage({ params }: Props) {
 
       {posts.length === 0 && (
         <div className="paper-card p-12 text-center">
-          <p className="font-hand text-xl text-ink-400">该标签下暂无文章</p>
+          <p className="font-hand text-xl text-ink-400">{t.tagsPage.emptyTag}</p>
         </div>
       )}
     </div>

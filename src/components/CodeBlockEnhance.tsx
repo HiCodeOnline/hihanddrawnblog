@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { siteConfig } from "@/config/site";
+import { t } from "@/i18n";
 
 const COLLAPSE_MIN_LINES = 10;
 
@@ -76,18 +77,18 @@ export default function CodeBlockEnhance() {
           const toggle = document.createElement("button");
           toggle.type = "button";
           toggle.className = "code-btn";
-          toggle.textContent = "展开";
+          toggle.textContent = t.codeBlock.expand;
           toggle.setAttribute("aria-expanded", "false");
           body.classList.add("collapsed");
 
           expandBtn = document.createElement("button");
           expandBtn.type = "button";
           expandBtn.className = "code-expand";
-          expandBtn.textContent = `展开全部 ${lines} 行`;
+          expandBtn.textContent = t.codeBlock.expandAll(lines);
 
           const doToggle = () => {
             const collapsed = body.classList.toggle("collapsed");
-            toggle.textContent = collapsed ? "展开" : "收起";
+            toggle.textContent = collapsed ? t.codeBlock.expand : t.codeBlock.collapse;
             toggle.setAttribute("aria-expanded", String(!collapsed));
             expandBtn!.style.display = collapsed ? "" : "none";
           };
@@ -101,7 +102,7 @@ export default function CodeBlockEnhance() {
           const copyBtn = document.createElement("button");
           copyBtn.type = "button";
           copyBtn.className = "code-btn";
-          copyBtn.textContent = "复制";
+          copyBtn.textContent = t.codeBlock.copy;
           copyBtn.addEventListener("click", async () => {
             try {
               await navigator.clipboard.writeText(text);
@@ -113,8 +114,8 @@ export default function CodeBlockEnhance() {
               document.execCommand("copy");
               ta.remove();
             }
-            copyBtn.textContent = "已复制";
-            setTimeout(() => (copyBtn.textContent = "复制"), 2000);
+            copyBtn.textContent = t.codeBlock.copied;
+            setTimeout(() => (copyBtn.textContent = t.codeBlock.copy), 2000);
           });
           actions.appendChild(copyBtn);
         }

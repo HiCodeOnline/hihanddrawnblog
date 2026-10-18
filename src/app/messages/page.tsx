@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { MessageCircleHeart } from "lucide-react";
 import messagesData from "@/data/messages.json";
 import Giscus from "@/components/Giscus";
+import { t } from "@/i18n";
 
 export const metadata: Metadata = {
-  title: "留言",
-  description: "给我留张小纸条吧",
+  title: t.messages.metaTitle,
+  description: t.messages.metaDesc,
 };
 
 interface Message {
@@ -21,11 +22,11 @@ export default function MessagesPage() {
     <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
       <div className="flex items-center gap-2 mb-2">
         <MessageCircleHeart className="w-5 h-5 text-sage-500" />
-        <h1 className="font-serif text-2xl font-bold text-ink-700">留言板</h1>
-        <span className="text-sm text-ink-400">共 {MESSAGES.length} 张小纸条</span>
+        <h1 className="font-serif text-2xl font-bold text-ink-700">{t.messages.title}</h1>
+        <span className="text-sm text-ink-400">{t.messages.count(MESSAGES.length)}</span>
       </div>
       <p className="text-sm text-ink-400 mb-8">
-        在下方评论区写下想说的话，便会贴到这面留言墙上～
+        {t.messages.subtitle}
       </p>
 
       {/* 留言便签墙 */}

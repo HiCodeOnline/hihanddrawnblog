@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import PostCard from "@/components/PostCard";
 import type { PostMeta } from "@/types";
+import { t } from "@/i18n";
 
 const PAGE_SIZE = 10;
 const MAX_BTNS = 5;
@@ -56,7 +57,7 @@ export default function PostBrowser({ posts }: Props) {
       {buttons.length > 0 && (
         <nav
           className="mt-8 flex items-center justify-center gap-2.5"
-          aria-label="分页"
+          aria-label={t.pagination.label}
         >
           {buttons.map((b) =>
             b === "prev" ? (
@@ -64,7 +65,7 @@ export default function PostBrowser({ posts }: Props) {
                 key="prev"
                 type="button"
                 className="page-btn"
-                aria-label="上一页"
+                aria-label={t.pagination.prev}
                 onClick={() => goto(cur - 1)}
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -74,7 +75,7 @@ export default function PostBrowser({ posts }: Props) {
                 key="next"
                 type="button"
                 className="page-btn"
-                aria-label="下一页"
+                aria-label={t.pagination.next}
                 onClick={() => goto(cur + 1)}
               >
                 <ChevronRight className="w-4 h-4" />
@@ -84,7 +85,7 @@ export default function PostBrowser({ posts }: Props) {
                 key={b}
                 type="button"
                 className={`page-btn ${b === cur ? "page-btn-active" : ""}`}
-                aria-label={`第 ${b} 页`}
+                aria-label={t.pagination.page(b)}
                 aria-current={b === cur ? "page" : undefined}
                 onClick={() => goto(b)}
               >

@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Archive, Calendar } from "lucide-react";
+import { format } from "date-fns";
 import PageHeader from "@/components/PageHeader";
 import { getAllPostsMeta } from "@/lib/posts";
+import { t, dateLocale } from "@/i18n";
 
 export default function ArchivesPage() {
   const posts = getAllPostsMeta();
@@ -9,7 +11,9 @@ export default function ArchivesPage() {
   // 按年份分组
   const yearMap = new Map<string, typeof posts>();
   posts.forEach((p) => {
-    const year = p.date ? new Date(p.date).getFullYear().toString() : "未知";
+    const year = p.date
+      ? new Date(p.date).getFullYear().toString()
+      : t.archives.unknownYear;
     if (!yearMap.has(year)) yearMap.set(year, []);
     yearMap.get(year)!.push(p);
   });
@@ -20,8 +24,8 @@ export default function ArchivesPage() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
       <PageHeader
-        title="文章归档"
-        subtitle={`共 ${posts.length} 篇文章`}
+        title={t.archives.title}
+        subtitle={t.archives.total(posts.length)}
         icon={<Archive className="w-8 h-8 text-sky-500" />}
       />
 
@@ -33,18 +37,17 @@ export default function ArchivesPage() {
                 {year}
               </span>
               <span className="text-sm text-ink-400">
-                {yearPosts.length} 篇
+                {t.archives.perYear(yearPosts.length)}
               </span>
               <div className="flex-1 dotted-divider" />
             </div>
 
             <div className="relative pl-6 border-l-2 border-dashed border-paper-300 space-y-4">
               {yearPosts.map((post) => {
-                const date = post.date
-                  ? new Date(post.date)
-                  : null;
-                const dateStr = date
-                  ? `${date.getMonth() + 1}月${date.getDate()}日`
+                const dateStr = post.date
+                  ? format(new Date(post.date), t.dateFormat.archiveItem, {
+                      locale: dateLocale,
+                    })
                   : "";
                 return (
                   <div key={post.slug} className="relative">
@@ -72,7 +75,7 @@ export default function ArchivesPage() {
 
       {posts.length === 0 && (
         <div className="paper-card p-12 text-center">
-          <p className="font-hand text-xl text-ink-400">还没有文章哦～</p>
+          <p className="font-hand text-xl text-ink-400">{t.archives.empty}</p>
         </div>
       )}
     </div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { siteConfig } from "@/config/site";
+import { t } from "@/i18n";
 
 /**
  * giscus 评论（基于 GitHub Discussions）
@@ -45,8 +46,7 @@ export default function Giscus() {
   if (!configured) {
     return (
       <div className="mt-10 paper-card p-6 text-center text-sm text-ink-400">
-        在 src/config/site.ts 中配置 giscus 的 repo / repoId / category /
-        categoryId 后即可开启评论（值可在{" "}
+        {t.giscus.notConfiguredPre}
         <a
           href="https://giscus.app/zh-CN"
           target="_blank"
@@ -54,8 +54,8 @@ export default function Giscus() {
           className="prose-link"
         >
           giscus.app
-        </a>{" "}
-        生成）💬
+        </a>
+        {t.giscus.notConfiguredPost}
       </div>
     );
   }

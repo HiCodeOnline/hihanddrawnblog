@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
+import { locale } from "@/i18n";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingStickers from "@/components/FloatingStickers";
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="zh-CN">
+    <html lang={locale}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -38,7 +39,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
         <link
-          href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+XiaoWei&family=Zhi+Mang+Xing&display=swap"
+          href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap"
           rel="stylesheet"
         />
       </head>

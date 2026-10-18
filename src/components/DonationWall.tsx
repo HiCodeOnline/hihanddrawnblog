@@ -1,5 +1,6 @@
 import { HeartHandshake } from "lucide-react";
 import donations from "@/data/donations.json";
+import { t } from "@/i18n";
 
 interface Donation {
   name: string;
@@ -10,8 +11,8 @@ interface Donation {
 }
 
 const CHANNELS = {
-  wechat: { label: "微信", color: "#7fb069" },
-  alipay: { label: "支付宝", color: "#5b9bd5" },
+  wechat: { label: t.donate.wechat, color: "#7fb069" },
+  alipay: { label: t.donate.alipay, color: "#5b9bd5" },
 } as const;
 
 /** 赞赏墙：展示 src/data/donations.json 中的赞赏记录 */
@@ -25,10 +26,10 @@ export default function DonationWall() {
     <section className="mt-8">
       <h2 className="section-title mb-2">
         <HeartHandshake className="w-5 h-5 text-rose-400" />
-        赞赏墙
+        {t.donationWall.title}
       </h2>
       <p className="text-sm text-ink-400 mb-5">
-        感谢 {list.length} 位小伙伴的投喂，共 ¥{total.toFixed(2)} ❤️
+        {t.donationWall.summary(list.length, total.toFixed(2))}
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

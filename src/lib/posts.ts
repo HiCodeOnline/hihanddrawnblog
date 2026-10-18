@@ -9,6 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeStringify from "rehype-stringify";
 import readingTime from "reading-time";
+import { t } from "@/i18n";
 import type { Post, PostFrontmatter, PostMeta } from "@/types";
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
@@ -76,7 +77,7 @@ function toMeta(raw: RawPost): PostMeta {
     excerpt:
       raw.data.excerpt ??
       raw.content.replace(/[#>*`\-!\[\]()]/g, "").slice(0, 120) + "...",
-    readingTime: stats.text,
+    readingTime: t.post.readingTime(Math.max(1, Math.ceil(stats.minutes))),
     wordCount: stats.words,
   };
 }

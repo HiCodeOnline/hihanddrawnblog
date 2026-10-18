@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { siteConfig } from "@/config/site";
+import { t } from "@/i18n";
 
 /** 微信图标（手绘风简约气泡） */
 function WeChatIcon({ className }: { className?: string }) {
@@ -30,8 +31,8 @@ const CHANNELS: {
   color: string;
   Icon: React.ComponentType<{ className?: string }>;
 }[] = [
-  { key: "wechat", label: "微信", color: "#7fb069", Icon: WeChatIcon },
-  { key: "alipay", label: "支付宝", color: "#5b9bd5", Icon: AlipayIcon },
+  { key: "wechat", label: t.donate.wechat, color: "#7fb069", Icon: WeChatIcon },
+  { key: "alipay", label: t.donate.alipay, color: "#5b9bd5", Icon: AlipayIcon },
 ];
 
 /** 赞赏区：点击微信/支付宝图标展示对应二维码 */
@@ -43,7 +44,7 @@ export default function DonateSection() {
   return (
     <div className="mt-10 text-center">
       <p className="hand-text text-lg text-ink-400">
-        如果这篇文章对你有帮助，请作者喝杯咖啡 ☕
+        {t.donate.prompt}
       </p>
       <div className="mt-4 flex items-center justify-center gap-4">
         {CHANNELS.filter((c) => donate[c.key]).map((c) => (
@@ -51,7 +52,7 @@ export default function DonateSection() {
             key={c.key}
             type="button"
             onClick={() => setActive(active === c.key ? null : c.key)}
-            aria-label={`${c.label}赞赏`}
+            aria-label={t.donate.aria(c.label)}
             className={`donate-btn ${active === c.key ? "donate-btn-active" : ""}`}
             style={{ "--dc": c.color } as React.CSSProperties}
           >
@@ -66,11 +67,11 @@ export default function DonateSection() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={donate[active]}
-            alt={`${active === "wechat" ? "微信" : "支付宝"}赞赏码`}
+            alt={t.donate.qrAlt(CHANNELS.find((c) => c.key === active)!.label)}
             className="w-48 h-48 object-contain mx-auto"
           />
           <p className="mt-3 hand-text text-base text-ink-400">
-            扫一扫，请作者喝杯咖啡～
+            {t.donate.scanTip}
           </p>
         </div>
       )}

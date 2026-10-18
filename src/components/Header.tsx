@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Menu, X, PenLine } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { t } from "@/i18n";
 
 export default function Header() {
   const pathname = usePathname();
@@ -34,7 +35,7 @@ export default function Header() {
                   : "text-ink-500 hover:text-ink-700 hover:bg-paper-200/50"
               }`}
             >
-              {item.name}
+              {item.key ? t.nav[item.key as keyof typeof t.nav] : item.name}
             </Link>
           ))}
         </nav>
@@ -43,7 +44,7 @@ export default function Header() {
         <button
           className="md:hidden p-2 rounded-lg text-ink-600 hover:bg-paper-200/50"
           onClick={() => setOpen(!open)}
-          aria-label="菜单"
+          aria-label={t.header.menu}
         >
           {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
         </button>
@@ -63,7 +64,7 @@ export default function Header() {
                   : "text-ink-500 hover:text-ink-700 hover:bg-paper-200/50"
               }`}
             >
-              {item.name}
+              {item.key ? t.nav[item.key as keyof typeof t.nav] : item.name}
             </Link>
           ))}
         </nav>

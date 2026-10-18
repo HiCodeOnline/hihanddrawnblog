@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FolderOpen } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { getAllCategories, getAllPostsMeta } from "@/lib/posts";
+import { t } from "@/i18n";
 
 export default function CategoriesPage() {
   const categories = getAllCategories();
@@ -10,8 +11,8 @@ export default function CategoriesPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
       <PageHeader
-        title="全部分类"
-        subtitle={`${categories.length} 个分类，${allPosts.length} 篇文章`}
+        title={t.categories.title}
+        subtitle={t.categories.subtitle(categories.length, allPosts.length)}
         icon={<FolderOpen className="w-8 h-8 text-sage-500" />}
       />
 
@@ -31,7 +32,7 @@ export default function CategoriesPage() {
                 </span>
               </div>
               <p className="text-sm text-ink-400 mt-1">
-                {cat.count} 篇文章 →
+                {t.categories.postCount(cat.count)}
               </p>
             </Link>
         ))}
@@ -39,7 +40,7 @@ export default function CategoriesPage() {
 
       {categories.length === 0 && (
         <div className="paper-card p-12 text-center">
-          <p className="font-hand text-xl text-ink-400">还没有分类哦～</p>
+          <p className="font-hand text-xl text-ink-400">{t.categories.empty}</p>
         </div>
       )}
     </div>
