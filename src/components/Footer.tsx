@@ -39,7 +39,7 @@ export default function Footer() {
             and Hexo theme <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener noreferrer">Flatpaper</a>.
           </p>
           <p className="mt-1 text-xs text-ink-300">
-            Powered by <a href="https://www.hicode.online/en/apps/hihanddrawn" target="_blank" rel="noopener noreferrer">HiCode.Online</a>
+            Powered by <a href="https://www.hicode.online/en/apps/hihanddrawnblog" target="_blank" rel="noopener noreferrer">HiCode.Online</a>
           </p>
         </div>
       </div>
