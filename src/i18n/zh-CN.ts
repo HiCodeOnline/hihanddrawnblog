@@ -96,6 +96,7 @@ const zhCN = {
   },
   donate: {
     prompt: "如果这篇文章对你有帮助，请作者喝杯咖啡 ☕",
+    promptAbout: "如果你喜欢这里的内容，请作者喝杯咖啡 ☕",
     wechat: "微信",
     alipay: "支付宝",
     aria: (label: string) => `${label}赞赏`,

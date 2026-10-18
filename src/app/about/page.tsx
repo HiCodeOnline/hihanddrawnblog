@@ -2,6 +2,7 @@ import { siteConfig } from "@/config/site";
 import { getSiteStats } from "@/lib/posts";
 import PageHeader from "@/components/PageHeader";
 import DonationWall from "@/components/DonationWall";
+import DonateSection from "@/components/DonateSection";
 import { User, Heart, Coffee } from "lucide-react";
 import { t } from "@/i18n";
 
@@ -71,6 +72,9 @@ export default function AboutPage() {
           <p>{t.about.contactDesc}</p>
         </div>
       </div>
+
+      {/* 赞赏信息 */}
+      <DonateSection prompt={t.donate.promptAbout} />
 
       {/* 赞赏墙 */}
       <DonationWall />

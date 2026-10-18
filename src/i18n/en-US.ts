@@ -93,6 +93,7 @@ const enUS: Dictionary = {
   },
   donate: {
     prompt: "If this article helped you, buy me a coffee ☕",
+    promptAbout: "If you enjoy the content here, buy me a coffee ☕",
     wechat: "WeChat",
     alipay: "Alipay",
     aria: (label: string) => `${label} Donate`,

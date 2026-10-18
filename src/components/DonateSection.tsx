@@ -36,7 +36,7 @@ const CHANNELS: {
 ];
 
 /** 赞赏区：点击微信/支付宝图标展示对应二维码 */
-export default function DonateSection() {
+export default function DonateSection({ prompt = t.donate.prompt }: { prompt?: string }) {
   const [active, setActive] = useState<Channel | null>(null);
   const donate = siteConfig.donate as Record<Channel, string | undefined>;
   if (!donate.wechat && !donate.alipay) return null;
@@ -44,7 +44,7 @@ export default function DonateSection() {
   return (
     <div className="mt-10 text-center">
       <p className="hand-text text-lg text-ink-400">
-        {t.donate.prompt}
+        {prompt}
       </p>
       <div className="mt-4 flex items-center justify-center gap-4">
         {CHANNELS.filter((c) => donate[c.key]).map((c) => (
