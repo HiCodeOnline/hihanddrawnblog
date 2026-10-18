@@ -79,6 +79,23 @@ console.log(greeting("旅人"));
 
 ![风景插画](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20a%20cozy%20desk%20with%20coffee%20notebook%20and%20plants%20warm%20healing%20style&image_size=landscape_16_9)
 
+### 图片网格
+
+使用 `:::grid{cols=N}` 容器可以把连续图片排成网格，N 支持 1-4（默认 2），窄屏时自动降为 2 列：
+
+:::grid{cols=3}
+![小花](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20a%20small%20daisy%20flower%20warm%20healing%20style&image_size=square)
+![咖啡](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20a%20cup%20of%20latte%20coffee%20warm%20healing%20style&image_size=square)
+![绿植](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20a%20potted%20green%20plant%20warm%20healing%20style&image_size=square)
+:::
+
+两列网格的效果：
+
+:::grid{cols=2}
+![晨光](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20morning%20light%20through%20a%20window%20warm%20healing%20style&image_size=landscape_4_3)
+![书桌](https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=watercolor%20illustration%20of%20a%20wooden%20desk%20with%20open%20journal%20warm%20healing%20style&image_size=landscape_4_3)
+:::
+
 ## 分割线
 
 上面是图片，下面是分割线。

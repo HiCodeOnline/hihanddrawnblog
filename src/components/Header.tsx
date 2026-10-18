@@ -83,7 +83,7 @@ export default function Header({
             onClick={() => setOpen(false)}
           />
           {/* 抽屉面板 */}
-          <aside className="drawer-panel fixed top-0 right-0 bottom-0 z-[70] w-72 max-w-[85vw] overflow-y-auto bg-[#fffdf6] shadow-[0_2px_16px_rgba(74,70,53,0.18)] p-5">
+          <aside className="drawer-panel fixed top-0 right-0 bottom-0 z-[70] w-48vw】 max-w-[50vw] overflow-y-auto bg-[#fffdf6] shadow-[0_2px_16px_rgba(74,70,53,0.18)] p-5">
             <div className="flex items-center justify-between mb-5">
               <Link
                 href="/"

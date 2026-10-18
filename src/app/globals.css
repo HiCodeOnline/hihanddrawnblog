@@ -633,6 +633,32 @@
 .prose-content img {
   @apply rounded-xl shadow-paper my-6 max-w-full;
 }
+/* 图片网格：:::grid{cols=N} 容器 */
+.img-grid {
+  display: grid;
+  gap: 12px;
+  margin: 1.5rem 0;
+}
+.img-grid.cols-1 { grid-template-columns: repeat(1, 1fr); }
+.img-grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.img-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.img-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.img-grid > p {
+  display: contents;
+  margin: 0;
+}
+.img-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin: 0 !important;
+}
+@media (max-width: 640px) {
+  .img-grid.cols-3,
+  .img-grid.cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 /* 分割线：手绘波浪线 */
 .prose-content hr {
   border: none;

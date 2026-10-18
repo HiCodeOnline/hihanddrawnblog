@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
+import remarkDirective from "remark-directive";
 import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
@@ -82,11 +83,33 @@ function toMeta(raw: RawPost): PostMeta {
   };
 }
 
+/**
+ * :::grid{cols=N} 容器指令 → 图片网格
+ * 仅包装为 <div class="img-grid cols-N">，样式在 globals.css 中定义
+ */
+function remarkImgGrid() {
+  return (tree: any) => {
+    const walk = (node: any) => {
+      if (node.type === "containerDirective" && node.name === "grid") {
+        const raw = parseInt(node.attributes?.cols ?? "2", 10);
+        const cols = Math.min(4, Math.max(1, Number.isNaN(raw) ? 2 : raw));
+        node.data = node.data ?? {};
+        node.data.hName = "div";
+        node.data.hProperties = { className: `img-grid cols-${cols}` };
+      }
+      (node.children ?? []).forEach(walk);
+    };
+    walk(tree);
+  };
+}
+
 /** 将 Markdown 渲染为 HTML */
 async function renderMarkdown(content: string): Promise<string> {
   const file = await unified()
     .use(remarkParse)
     .use(remarkGfm)
+    .use(remarkDirective)
+    .use(remarkImgGrid)
     .use(remarkRehype)
     .use(rehypeSlug)
     .use(rehypeAutolinkHeadings, {
