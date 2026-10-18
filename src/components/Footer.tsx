@@ -12,7 +12,7 @@ export default function Footer() {
             <p className="font-serif font-bold text-ink-700">
               <Link href="/" className="flex items-center gap-2 group">
                 <span className="font-serif font-bold text-lg text-ink-700">
-                  <img src="/logo.svg" alt={siteConfig.name} className="h-9" />
+                  <img src={siteConfig.logo} alt={siteConfig.name} className="h-9" />
                 </span>
               </Link>
             </p>
@@ -24,10 +24,10 @@ export default function Footer() {
               href={siteConfig.social.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 rounded-full bg-white border border-paper-200 flex items-center justify-center text-ink-400 hover:text-ink-700 hover:border-sage-300 transition-colors"
+              className="w-9 h-9 rounded-full border border-paper-200 border-dashed flex items-center justify-center text-ink-400 hover:text-ink-700 hover:border-sage-300 transition-colors"
               aria-label="GitHub"
             >
-              <Github className="w-4 h-4" />
+              <Github className="w-5 h-5" />
             </a>
           </div>
         </div>

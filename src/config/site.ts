@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "HiProfile",
   title: "HiProfile · 治愈系手帐博客",
+  logo: "/logo.svg",
   description:
     "一个清新自然的手帐风格博客，记录生活、分享文字，在纸页间寻找治愈。",
   author: "手帐旅人",
