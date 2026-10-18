@@ -32,7 +32,10 @@ export const siteConfig = {
     categoryId: "DIC_kwDOVOJM8s4DI3JP",
     mapping: "pathname",
     reactionsEnabled: true,
-    theme: "light",
+    // 手帐风自定义主题（public/giscus-theme.css），
+    // 组件会自动解析为 <站点地址>/giscus-theme.css 供 iframe 加载；
+    // 也可改回内置主题："light" | "dark" | "light_high_contrast" 等
+    theme: "/giscus-theme.css",
     lang: "zh-CN",
   },
   // 代码块功能按钮（false 则不渲染对应按钮）

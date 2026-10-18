@@ -902,4 +902,14 @@
   animation: drawer-in 0.25s ease-out;
 }
 
+/* giscus 评论容器：手绘纸卡内嵌 iframe 自适应 */
+.giscus-wrap {
+  padding: 0.75rem 1rem 1.25rem;
+}
+.giscus-wrap iframe {
+  width: 100% !important;
+  border: none;
+  color-scheme: light;
+}
+
 /* 分割线：手绘波浪线 */
