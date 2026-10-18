@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import stickersData from "@/data/stickers.json";
+import { withBase } from "@/lib/path";
 
 interface StickerDef {
   id: string;
@@ -148,7 +149,7 @@ export default function FloatingStickers() {
           >
             {s.src ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img src={s.src} alt="" draggable={false} />
+              <img src={withBase(s.src)} alt="" draggable={false} />
             ) : (
               s.emoji
             )}

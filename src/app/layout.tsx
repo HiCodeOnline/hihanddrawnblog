@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import FloatingStickers from "@/components/FloatingStickers";
 import BackToTop from "@/components/BackToTop";
 import { getAllPostsMeta, getAllCategories, getAllTags } from "@/lib/posts";
+import { withBase } from "@/lib/path";
 
 export const metadata: Metadata = {
   title: {
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   icons: {
-    icon: "/favicon.svg",
+    icon: withBase("/favicon.svg"),
   },
 };
 

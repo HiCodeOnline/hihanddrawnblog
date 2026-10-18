@@ -1,33 +1,35 @@
+import { withBase } from "@/lib/path";
+
 export const siteConfig = {
-  name: "HiProfile",
-  title: "HiProfile · 治愈系手帐博客",
-  logo: "/logo.svg",
+  name: "HiCode",
+  title: "HiCode · 治愈系手帐博客",
+  logo: withBase("/logo.svg"),
   description:
     "一个清新自然的手帐风格博客，记录生活、分享文字，在纸页间寻找治愈。",
   author: "手帐旅人",
-  avatar: "/avatar.svg",
+  avatar: withBase("/avatar.svg"),
   // 首页 Hero 背景图（使用占位渐变/插画）
-  heroImage: "/hero-pattern.svg",
+  heroImage: withBase("/hero-pattern.svg"),
   bio: "在纸页与光影之间，记录每一段值得珍藏的日常。",
   social: {
-    github: "https://github.com",
+    github: "https://github.com/HiCodeOnline/hihanddrawnblog",
     x: "https://x.com",
     youtube: "https://youtube.com",
     instagram: "https://instagram.com",
-    email: "hello@hiprofile.dev",
-    rss: "/feed.xml",
+    email: "hicodeonline@gmail.com",
+    rss: withBase("/feed.xml"),
   },
   // 赞赏二维码（替换 public/ 下对应图片为你的真实赞赏码）
   donate: {
-    wechat: "/wechat-qr.svg",
-    alipay: "/alipay-qr.svg",
+    wechat: withBase("/wechat_qr.webp"),
+    alipay: withBase("/alipay_qr.webp"),
   },
   // giscus 评论（基于 GitHub Discussions）：在 https://giscus.app/zh-CN 生成各项值后填入
   giscus: {
-    repo: "your-username/your-repo",
-    repoId: "YOUR_REPO_ID",
+    repo: "HiCodeOnline/hihanddrawnblog",
+    repoId: "R_kgDOVOJM8g",
     category: "Announcements",
-    categoryId: "YOUR_CATEGORY_ID",
+    categoryId: "DIC_kwDOVOJM8s4DI3JP",
     mapping: "pathname",
     reactionsEnabled: true,
     theme: "light",
@@ -51,7 +53,7 @@ export const siteConfig = {
     { key: "archives", href: "/archives" },
     { key: "about", href: "/about" },
   ] as { key?: string; name?: string; href: string }[],
-  postsPerPage: 6,
+  postsPerPage: 10,
 };
 
 export type SiteConfig = typeof siteConfig;

@@ -43,7 +43,7 @@ export default function Header({
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <span className="font-serif font-bold text-lg text-ink-700">
-            <img src="/logo.svg" alt={siteConfig.name} className="h-9" />
+            <img src={siteConfig.logo} alt={siteConfig.name} className="h-9" />
           </span>
         </Link>
 
@@ -90,7 +90,7 @@ export default function Header({
                 className="flex items-center gap-2"
                 onClick={() => setOpen(false)}
               >
-                <img src="/logo.svg" alt={siteConfig.name} className="h-9" />
+                <img src={siteConfig.logo} alt={siteConfig.name} className="h-9" />
               </Link>
               <button
                 className="p-2 rounded-lg text-ink-600 hover:bg-paper-200/50"

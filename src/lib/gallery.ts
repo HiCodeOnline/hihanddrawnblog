@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { withBase } from "@/lib/path";
 
 export interface GalleryPhoto {
   src: string;
@@ -22,7 +23,7 @@ export function getGalleryPhotos(): GalleryPhoto[] {
       } else if (IMAGE_EXTS.has(path.extname(entry.name).toLowerCase())) {
         const rel = path.relative(GALLERY_DIR, full).split(path.sep).join("/");
         photos.push({
-          src: `/gallery/${rel}`,
+          src: withBase(`/gallery/${rel}`),
           name: path.basename(entry.name, path.extname(entry.name)),
         });
       }
