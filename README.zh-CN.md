@@ -1,8 +1,9 @@
-# HiProfile
-
-[English](./README.md) | **简体中文**
-
-治愈系手帐风格的静态博客，基于 Next.js 14 构建（全静态导出，无需服务器运行时）。
+<div align="center">
+  <img src="public/favicon.svg" alt="HiHandDrawnBlog" width="96" />
+  <h1>HiHandDrawnBlog</h1>
+  <p>治愈系手帐风格的静态博客，基于 Next.js 14 构建（全静态导出，无需服务器运行时）。</p>
+  <p>简体中文 · <a href="README.md">English</a></p>
+</div>
 
 ## 功能特性
 
@@ -82,4 +83,4 @@ Next.js 14（`output: "export"`） · React 18 · Tailwind CSS · remark/rehype 
 
 ## 许可证
 
-MIT
+[Apache License 2.0](LICENSE)

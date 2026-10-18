@@ -1,8 +1,10 @@
-# HiProfile
+<div align="center">
+  <img src="public/favicon.svg" alt="HiHandDrawnBlog" width="96" />
+  <h1>HiHandDrawnBlog</h1>
+  <p>A healing handwritten-notebook style static blog, built with Next.js 14 (full static export, no server runtime required).</p>
+  <p>English · <a href="README.zh-CN.md">中文</a></p>
+</div>
 
-**English** | [简体中文](./README.zh-CN.md)
-
-A healing handwritten-notebook style static blog, built with Next.js 14 (full static export, no server runtime required).
 
 ## Features
 
@@ -82,4 +84,4 @@ Next.js 14 (`output: "export"`) · React 18 · Tailwind CSS · remark/rehype · 
 
 ## License
 
-MIT
+[Apache License 2.0](LICENSE)
