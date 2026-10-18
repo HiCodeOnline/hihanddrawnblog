@@ -143,6 +143,13 @@ main .gsc-comment-box-textarea-extras {
   border-width: 0 !important;
 }
 
+main .gsc-comment-box-write:focus-within {
+  border: none;
+  border-color: none;
+  box-shadow: none;
+  outline: none;
+}
+
 /* 普通按钮：虚线手绘风 + 斜纹底 + 悬停轻抬（与导航栏选中态一致的斜纹） */
 main button {
   border-radius: 10px;
