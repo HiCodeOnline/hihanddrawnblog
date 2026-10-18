@@ -30,7 +30,7 @@ export default function Header() {
               href={item.href}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 isActive(item.href)
-                  ? "bg-sage-100 text-sage-600"
+                  ? "nav-active"
                   : "text-ink-500 hover:text-ink-700 hover:bg-paper-200/50"
               }`}
             >
@@ -59,7 +59,7 @@ export default function Header() {
               onClick={() => setOpen(false)}
               className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
                 isActive(item.href)
-                  ? "bg-sage-100 text-sage-600"
+                  ? "nav-active"
                   : "text-ink-500 hover:text-ink-700 hover:bg-paper-200/50"
               }`}
             >

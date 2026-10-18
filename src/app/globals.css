@@ -355,6 +355,64 @@
     cursor: grabbing;
   }
 
+  /* 图集照片墙：拍立得卡片 + 上两角胶带 */
+  .wall-photo {
+    position: absolute;
+    background: #fffdf6;
+    border: 1px solid rgba(232, 221, 192, 0.8);
+    transform: rotate(var(--r, 0deg));
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: none;
+  }
+  .wall-photo:active {
+    cursor: grabbing;
+    box-shadow: 0 3px 10px rgba(74, 70, 53, 0.14);
+  }
+  .wall-photo img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    background: #f5efdd;
+  }
+  .wall-photo figcaption {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 15px;
+    color: #6b6653;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .wall-tape {
+    position: absolute;
+    width: 54px;
+    height: 16px;
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.25) 0 4px,
+      transparent 4px 8px
+    );
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(74, 70, 53, 0.18);
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* 导航选中项：浅绿底 + 斜纹 */
+  .nav-active {
+    @apply text-sage-600;
+    background-color: theme("colors.sage.100");
+    background-image: repeating-linear-gradient(
+      45deg,
+      rgba(143, 181, 127, 0.18) 0 4px,
+      transparent 4px 8px
+    );
+  }
+
   /* 贴纸式标签：多彩 dashed 边框 */
   .sticker-tag {
     --tc: #8fb57f;
@@ -392,7 +450,7 @@
   /* 便签纸效果 */
   .sticky-note {
     @apply relative bg-butter-100 border border-butter-200 rounded-lg p-4
-           shadow-paper-sticky;
+           ;
     transform: rotate(-0.5deg);
   }
   .sticky-note::before {

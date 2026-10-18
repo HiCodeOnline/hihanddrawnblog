@@ -1,0 +1,20 @@
+[
+  {
+    "name": "云边小筑",
+    "url": "https://example.com",
+    "avatar": "",
+    "description": "记录云边的生活碎片与午后手记"
+  },
+  {
+    "name": "纸飞机",
+    "url": "https://example.org",
+    "avatar": "",
+    "description": "一只飞过山川湖海的纸飞机"
+  },
+  {
+    "name": "拾光机",
+    "url": "https://example.net",
+    "avatar": "",
+    "description": "拾起那些散落在时光里的瞬间"
+  }
+]

@@ -19,7 +19,7 @@ import {
 } from "@/lib/posts";
 import type { HeadingItem } from "@/types";
 import DonateSection from "@/components/DonateSection";
-import Utterances from "@/components/Utterances";
+import Giscus from "@/components/Giscus";
 import ImageLightbox from "@/components/ImageLightbox";
 import CodeBlockEnhance from "@/components/CodeBlockEnhance";
 
@@ -201,7 +201,7 @@ export default async function PostPage({ params }: Props) {
       </div>
 
       {/* 评论 */}
-      <Utterances />
+      <Giscus />
 
       {/* 图片灯箱 */}
       <ImageLightbox />

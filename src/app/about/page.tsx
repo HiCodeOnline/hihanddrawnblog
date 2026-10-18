@@ -9,12 +9,6 @@ export default function AboutPage() {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
-      <PageHeader
-        title="关于"
-        subtitle="一页纸的自我介绍"
-        icon={<User className="w-8 h-8 text-rose-400" />}
-      />
-
       {/* 个人卡片 */}
       <div className="paper-card p-8 text-center relative mb-8">
         <img

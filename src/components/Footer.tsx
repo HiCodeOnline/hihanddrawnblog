@@ -10,7 +10,11 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
             <p className="font-serif font-bold text-ink-700">
-              {siteConfig.name}
+              <Link href="/" className="flex items-center gap-2 group">
+                <span className="font-serif font-bold text-lg text-ink-700">
+                  <img src="/logo.svg" alt={siteConfig.name} className="h-9" />
+                </span>
+              </Link>
             </p>
             <p className="text-sm text-ink-400 mt-1">{siteConfig.bio}</p>
           </div>

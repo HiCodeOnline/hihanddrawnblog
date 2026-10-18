@@ -21,12 +21,16 @@ export const siteConfig = {
     wechat: "/wechat-qr.svg",
     alipay: "/alipay-qr.svg",
   },
-  // utterances 评论（把 repo 改成你的 GitHub 仓库，如 "name/blog-comments"）
-  utterances: {
+  // giscus 评论（基于 GitHub Discussions）：在 https://giscus.app/zh-CN 生成各项值后填入
+  giscus: {
     repo: "your-username/your-repo",
-    issueTerm: "pathname",
-    theme: "github-light",
-    label: "comment",
+    repoId: "YOUR_REPO_ID",
+    category: "Announcements",
+    categoryId: "YOUR_CATEGORY_ID",
+    mapping: "pathname",
+    reactionsEnabled: true,
+    theme: "light",
+    lang: "zh-CN",
   },
   // 代码块功能按钮（false 则不渲染对应按钮）
   codeBlock: {
@@ -35,9 +39,10 @@ export const siteConfig = {
   },
   nav: [
     { name: "首页", href: "/" },
+    { name: "图集", href: "/gallery" },
+    { name: "朋友圈", href: "/friends" },
+    { name: "留言", href: "/messages" },
     { name: "归档", href: "/archives" },
-    { name: "分类", href: "/categories" },
-    { name: "标签", href: "/tags" },
     { name: "关于", href: "/about" },
   ],
   postsPerPage: 6,
