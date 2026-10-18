@@ -36,10 +36,10 @@ export default function Footer() {
           <p className="inline-flex items-center gap-1.5">
             © {year} {siteConfig.name}. Made with
             <Heart className="w-3.5 h-3.5 text-rose-400 fill-rose-400" />
-            and paper.
+            and Hexo theme <a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener noreferrer">Flatpaper</a>.
           </p>
           <p className="mt-1 text-xs text-ink-300">
-            Powered by Next.js · Static Export
+            Powered by <a href="https://www.hicode.online/en/apps/hihanddrawn" target="_blank" rel="noopener noreferrer">HiCode.Online</a>
           </p>
         </div>
       </div>

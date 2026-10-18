@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingStickers from "@/components/FloatingStickers";
 import BackToTop from "@/components/BackToTop";
+import { getAllPostsMeta, getAllCategories, getAllTags } from "@/lib/posts";
 
 export const metadata: Metadata = {
   title: {
@@ -29,6 +30,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const posts = getAllPostsMeta();
+  const categories = getAllCategories();
+  const tags = getAllTags();
+
   return (
     <html lang={locale}>
       <head>
@@ -44,7 +49,13 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Header />
+        <Header
+          postCount={posts.length}
+          categoryCount={categories.length}
+          tagCount={tags.length}
+          categories={categories}
+          tags={tags}
+        />
         <main className="flex-1">{children}</main>
         <Footer />
         <FloatingStickers />
