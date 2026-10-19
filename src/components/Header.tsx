@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { t } from "@/i18n";
@@ -31,6 +31,16 @@ export default function Header({
 }: Props) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+
+  // 抽屉打开时锁定页面滚动，关闭时恢复
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
 
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname.startsWith(href);

@@ -6,7 +6,7 @@ export const siteConfig = {
   logo: withBase("/logo.svg"),
   description:
     "一个清新自然的手帐风格博客，记录生活、分享文字，在纸页间寻找治愈。",
-  author: "手帐旅人",
+  author: "HiCode.Online",
   avatar: withBase("/avatar.png"),
   // 首页 Hero 背景图（使用占位渐变/插画）
   heroImage: withBase("/hero-pattern.svg"),
