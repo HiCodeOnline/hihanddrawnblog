@@ -1,0 +1,40 @@
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Cloudflare Pages 部署在根路径，无需设置 basePath
+      # NEXT_PUBLIC_GA_ID / NEXT_PUBLIC_ADSENSE_CLIENT 为可选 Secret：
+      # 设置后在构建期注入 Google Analytics 统计代码与 AdSense 自动广告脚本
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CF_API_TOKEN }}
+          accountId: ${{ secrets.CF_ACCOUNT_ID }}
+          command: pages deploy out --project-name=handrawnblog
+
+      # 首次部署前需先创建 Pages 项目，可执行一次：
+      # npx wrangler pages project create <project-name> --production-branch=main
