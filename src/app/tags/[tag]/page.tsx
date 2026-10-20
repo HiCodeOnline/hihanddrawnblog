@@ -6,7 +6,7 @@ import { getAllTags, getPostsByTag } from "@/lib/posts";
 import { t } from "@/i18n";
 
 interface Props {
-  params: { tag: string };
+  params: Promise<{ tag: string }>;
 }
 
 export function generateStaticParams() {
@@ -15,14 +15,16 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props) {
+  const { tag } = await params;
   return {
-    title: t.tagsPage.metaTitle(decodeURIComponent(params.tag)),
+    title: t.tagsPage.metaTitle(decodeURIComponent(tag)),
   };
 }
 
-export default function TagPage({ params }: Props) {
-  const tag = decodeURIComponent(params.tag);
+export default async function TagPage({ params }: Props) {
+  const { tag: rawTag } = await params;
+  const tag = decodeURIComponent(rawTag);
   const posts = getPostsByTag(tag);
 
   return (

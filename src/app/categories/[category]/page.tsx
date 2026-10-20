@@ -6,7 +6,7 @@ import { getAllCategories, getPostsByCategory } from "@/lib/posts";
 import { t } from "@/i18n";
 
 interface Props {
-  params: { category: string };
+  params: Promise<{ category: string }>;
 }
 
 export function generateStaticParams() {
@@ -15,14 +15,16 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: Props) {
+export async function generateMetadata({ params }: Props) {
+  const { category } = await params;
   return {
-    title: t.categories.metaTitle(decodeURIComponent(params.category)),
+    title: t.categories.metaTitle(decodeURIComponent(category)),
   };
 }
 
-export default function CategoryPage({ params }: Props) {
-  const category = decodeURIComponent(params.category);
+export default async function CategoryPage({ params }: Props) {
+  const { category: rawCategory } = await params;
+  const category = decodeURIComponent(rawCategory);
   const posts = getPostsByCategory(category);
 
   return (

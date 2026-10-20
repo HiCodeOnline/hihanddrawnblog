@@ -24,12 +24,12 @@ import ImageLightbox from "@/components/ImageLightbox";
 import CodeBlockEnhance from "@/components/CodeBlockEnhance";
 
 interface Props {
-  /** 年/月/日/slug 路径段，如 ["2026", "10", "05", "autumn-coffee"] */
-  params: { slug: string[] };
+  /** Next 15+ 起为 Promise，需 await */
+  params: Promise<{ slug: string[] }>;
 }
 
-function hrefFromParams(params: Props["params"]) {
-  return `/posts/${params.slug.join("/")}`;
+function hrefFromSlug(slug: string[]) {
+  return `/posts/${slug.join("/")}`;
 }
 
 export function generateStaticParams() {
@@ -39,7 +39,8 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const post = await getPostByHref(hrefFromParams(params));
+  const { slug } = await params;
+  const post = await getPostByHref(hrefFromSlug(slug));
   if (!post) return {};
   return {
     title: post.title,
@@ -48,7 +49,8 @@ export async function generateMetadata({ params }: Props) {
 }
 
 export default async function PostPage({ params }: Props) {
-  const href = hrefFromParams(params);
+  const { slug } = await params;
+  const href = hrefFromSlug(slug);
   const post = await getPostByHref(href);
   if (!post) notFound();
 
